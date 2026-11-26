@@ -11,5 +11,15 @@ class Student extends Model
         'email',
         'phone',
         'address',
+        'date_of_birth',
     ];
+
+    protected $casts = [
+        'date_of_birth' => 'date',
+    ];
+
+    public function getAgeAttribute(): ?int
+    {
+        return $this->date_of_birth?->age;
+    }
 }
